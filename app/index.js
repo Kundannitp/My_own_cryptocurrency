@@ -41,12 +41,12 @@ app.get('/transactions',(req,res)=>{
 
 app.post('/transactions',(req,res)=>{
     const {amount,reciepnt}=req.body;
-    const transaction=wallet.createTransaction(reciepnt,amount,tp);
+    const transaction=wallet.createTransaction(reciepnt,amount,bc,tp);
     p2pserver.broadCastTransaction(transaction);
     res.redirect('/transactions');
 });
 
-app.get('/mykey',(req,res)=>{
+app.get('/address',(req,res)=>{
     res.json({publicKey:wallet.publicKey});
 });
 
@@ -57,6 +57,12 @@ app.get('/mine-transaction',(req,res)=>{
     res.redirect('/blocks');
     
 }); 
+
+app.get('/balance',(req,res)=>{
+    const bal=wallet.calculateBalance(bc);
+    console.log(bal);
+    res.json({bal:bal});
+})
 
 
 app.listen(HTTP_PORT,()=>{

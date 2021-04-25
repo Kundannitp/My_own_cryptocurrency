@@ -5,14 +5,14 @@ class Transaction{
 
     constructor(){
         this.id=chain.getId();
-        this.input=null;
-        this.output=[];
+        this.input=null;//consists of information about the sender
+        this.output=[];//how much currency is given to a wallet
     }
 
     updateTransaction(senderWallet,reciepnt,amount){
         const senderOutput=this.output.find(output=>output.address===senderWallet.publicKey);
         if(amount>senderOutput.amount){
-            console.log(`you dont have that much ${amount} in you wallet`);
+            console.log(`you don't have that much ${amount} in you wallet`);
             return this;
         }
 
@@ -37,7 +37,7 @@ class Transaction{
     static newTransaction(senderWallet,reciepnt,amount){
         
         if(senderWallet.balance<amount){
-            console.log(`sorry your wallet dont have ${amount} balance avail`);
+            console.log(`sorry your wallet don't have ${amount} balance avail`);
             return;
         }
         return this.transactionWithOutput(senderWallet, [{

@@ -37,7 +37,6 @@ class Block{
             hash = Block.hash(timestamp, lastBlock.hash, data, nonce,dificulty);
         }while(hash.substring(0,dificulty)!=='0'.repeat(dificulty));
         
-
         return new this(timestamp,lasthash,hash,data,nonce,dificulty);
     }
 

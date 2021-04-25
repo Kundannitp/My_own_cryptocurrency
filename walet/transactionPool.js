@@ -21,13 +21,14 @@ class TransactionPool{
     }
 
     validTransactions(){
-        let outputTotal=0;
+        var outputTotal=0;
         const arr=new Array();
         this.transactions.forEach(tr=>{
             outputTotal=0;
             tr.output.forEach(ot=>{
                 outputTotal+=ot.amount;
             });
+            // console.log(outputTotal);
             if(tr.input.amount===outputTotal&&Transaction.validateTransaction(tr)){
                 arr.push(tr);
             }

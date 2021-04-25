@@ -1,6 +1,7 @@
 const Transactionpool=require('./transactionPool');
 const Transaction=require('./transaction');
 const Wallet=require('./index');
+const block_chain = require('../blockchain/index')
 const { MINE_REWARD }=require('../config');
 
 describe('cheaking work of transaction pool',()=>{
@@ -8,7 +9,7 @@ describe('cheaking work of transaction pool',()=>{
     beforeEach(()=>{
         tp=new Transactionpool();
         wallet=new Wallet();
-        transaction=wallet.createTransaction("random234rec",20,tp);
+        transaction=wallet.createTransaction("random234rec",20,block_chain,tp);
     })
 
     it('update transactions',()=>{
@@ -27,7 +28,7 @@ describe('cheaking work of transaction pool',()=>{
             validtrans = [...tp.transactions];
             for (let i = 0; i < 6; i++) {
                 wallet=new Wallet();
-                transaction = wallet.createTransaction("newtrans123", 25, tp);
+                transaction = wallet.createTransaction("newtrans123", 25, block_chain, tp);
                 if (i % 2 == 0) {
                     transaction.input.amount = 999999;
                 } else {

@@ -11,7 +11,8 @@ class Miner{
 
     mine(){
         const validTransactions=this.transitionpool.validTransactions();
-        console.log(validTransactions);
+        // const validTransactions=this.transitionpool.transactions;
+        // console.log(validTransactions);
         
         validTransactions.push(Transaction.mineReward(this.wallet,Wallet.blockChainWallet()));
         const newBlock=this.blockChain.addBlock(validTransactions);

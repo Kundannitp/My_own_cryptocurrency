@@ -2,6 +2,8 @@ const Websocket=require('ws');
 
 const P2P_PORT=process.env.P2P_PORT||5001;
 
+// $HTTP_PORT=3002 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm run dev
+
 const peers=process.env.PEERS ? process.env.PEERS.split(','):[];
 const MSSG_TYPE={
     chain:"CHAIN",
@@ -60,7 +62,7 @@ class P2pServer{
         });       
     }
 
-    sendChain(socket){
+    sendChain(socket){ 
         socket.send(JSON.stringify({
             type:MSSG_TYPE.chain,
             chain:this.blockchain.chain
