@@ -1,5 +1,5 @@
 # My_own_cryptocurrency
-Built My own cryptocurrency using blockchain
+Built My own cryptocurrency using blockchain in node.js
 # install required modules mentioned in package.json
 npm install 
 # run your application
